@@ -1,0 +1,18 @@
+task: aidoc_medmcqa
+dataset_path: medmcqa
+output_type: generate_until
+training_split: train
+validation_split: validation
+test_split: validation
+doc_to_text: !function utils_medmcqa.doc_to_text
+doc_to_target: !function utils_medmcqa.doc_to_target
+description: "You are a medical doctor answering realworld medical entrance exam questions. Based on your understanding of basic and clinical science, medical knowledge, and mechanisms underlying health, disease, patient care, and modes of therapy, answer the following multiple-choice question. Select one correct answer from A to D. Base your answer on the current and standard practices referenced in medical guidelines.\n\n"
+# should_decontaminate: true  # Meditron doesn't seem to decontaminate
+# doc_to_decontamination_query: "{{question}}"
+generation_kwargs:
+  max_gen_toks: 1
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+    ignore_case: true

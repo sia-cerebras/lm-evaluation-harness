@@ -1,12 +1,13 @@
 task: aidoc_medqa_4options
-dataset_path: GBaker/MedQA-USMLE-4-options-hf
+# Meditron code uses "GBaker/MedQA-USMLE-4-options", but the only difference is the preprocessing.
+dataset_path: GBaker/MedQA-USMLE-4-options-hf  
 output_type: generate_until
 training_split: train
 validation_split: validation
 test_split: test
 doc_to_text: !function preprocess_medqa.doc_to_text
 doc_to_target: !function preprocess_medqa.doc_to_target
-# doc_to_choice: [ 'A', 'B', 'C', 'D' ]
+description: "You are a medical doctor taking the US Medical Licensing Examination. You need to demonstrate your understanding of basic and clinical science, medical knowledge, and mechanisms underlying health, disease, patient care, and modes of therapy. Show your ability to apply the knowledge essential for medical practice. For the following multiple-choice question, select one correct answer from A to D. Base your answer on the current and standard practices referenced in medical guidelines.\n\n"
 generation_kwargs:
   # until:
   #   - "</s>"
@@ -15,4 +16,4 @@ metric_list:
   - metric: exact_match
     aggregation: mean
     higher_is_better: true
-
+    ignore_case: true  # This is the behavior in Meditron's code. They call `lower()` on model generations.

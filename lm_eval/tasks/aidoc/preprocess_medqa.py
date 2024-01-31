@@ -4,5 +4,5 @@ def doc_to_text(doc) -> str:
     return f"Question: {doc['sent1']}\n{answers}Answer:"
 
 
-def doc_to_target(doc) -> int:
+def doc_to_target(doc) -> str:
     return ['A', 'B', 'C', 'D'][doc["label"]]
