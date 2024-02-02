@@ -1,3 +1,4 @@
+group: meditron_multimedqa
 task: aidoc_pubmedqa
 dataset_path: bigbio/pubmed_qa
 dataset_name: pubmed_qa_labeled_fold0_source  # Meditron uses the same subset
