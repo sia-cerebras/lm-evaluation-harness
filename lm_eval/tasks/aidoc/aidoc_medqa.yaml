@@ -1,6 +1,7 @@
+group: meditron_multimedqa
 task: aidoc_medqa_4options
 # Meditron code uses "GBaker/MedQA-USMLE-4-options", but the only difference is the preprocessing.
-dataset_path: GBaker/MedQA-USMLE-4-options-hf  
+dataset_path: GBaker/MedQA-USMLE-4-options-hf
 output_type: generate_until
 training_split: train
 validation_split: validation
@@ -17,4 +18,3 @@ metric_list:
     aggregation: mean
     higher_is_better: true
     ignore_case: true  # This is the behavior in Meditron's code. They call `lower()` on model generations.
-
